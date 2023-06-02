@@ -1,13 +1,19 @@
 "use strict";
 
-const {subdomain, vonageNumber} = require('./secrets.js');
 const express = require("express");
 const app = express();
 app.use(express.json());
 
+const subdomain = '';
+const vonageNumber = '';
+
+if (!subdomain || !vonageNumber) {
+  throw new Error("Set the subdomain and vonageNumber variables");
+}
+
 app.get("/voice/answer", (req, res) => {
   console.log("NCCO request:");
-  console.log(`  - callee: ${req.query.to}`);
+  console.log(req.query);
   console.log("---");
   res.json([
     {
