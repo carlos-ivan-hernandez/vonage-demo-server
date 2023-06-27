@@ -1,18 +1,19 @@
 "use strict";
 
+require('dotenv').config();
 const express = require("express");
 const app = express();
 app.use(express.json());
 
-const subdomain = '';
-const vonageNumber = '';
+const subdomain = process.env.VONAGE_SUBDOMAIN;
+const vonageNumber = process.env.VONAGE_PHONE_NUMBER;
 
 if (!subdomain || !vonageNumber) {
   throw new Error("Set the subdomain and vonageNumber variables");
 }
 
 app.get("/voice/answer", (req, res) => {
-  console.log("NCCO request:");
+  console.log("/voice/answer");
   console.log(req.query);
   console.log("---");
   res.json([
@@ -29,7 +30,7 @@ app.get("/voice/answer", (req, res) => {
 });
 
 app.all("/voice/event", (req, res) => {
-  console.log("EVENT:");
+  console.log("/voice/event");
   console.dir(req.body);
   console.log("---");
   res.sendStatus(200);
