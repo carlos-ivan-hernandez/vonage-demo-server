@@ -14,5 +14,8 @@
     "express": "^4.18.2",
     "localtunnel": "^2.0.2",
     "nexmo-client": "^9.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
   }
 }
